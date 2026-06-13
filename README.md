@@ -3,10 +3,10 @@
 LuminaCarbon is a modern, gamified carbon and water footprint tracking application. Designed with a sleek dark aesthetic, it empowers users to visualize their environmental impact in real-time through an interactive 3D **Virtual Eco-System** that thrives or decays based on your daily sustainability choices.
 
 <p align="center">
-  <img src="assets/placeholder/1.png" width="48%" alt="Dashboard Overview" />
-  <img src="assets/placeholder/2.png" width="48%" alt="Eco-System Preview" />
-  <img src="assets/placeholder/3.png" width="48%" alt="Insights & Tips" />
-  <img src="assets/placeholder/4.png" width="48%" alt="Activity Log" />
+  <img src="assets/1.png" width="48%" alt="Dashboard Overview" />
+  <img src="assets/2.png" width="48%" alt="Eco-System Preview" />
+  <img src="assets/3.png" width="48%" alt="Insights & Tips" />
+  <img src="assets/4.png" width="48%" alt="Activity Log" />
 </p>
 
 ## ✨ Key Features
