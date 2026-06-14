@@ -59,7 +59,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Main Score Widget */}
-        <section className="col-span-1 lg:col-span-2 glass rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden animate-pulse-glow" aria-labelledby="footprint-heading">
+        <section className="col-span-1 lg:col-span-2 glass rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden" aria-labelledby="footprint-heading">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)] rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
           
           <h2 id="footprint-heading" className="text-sm md:text-lg font-semibold text-gray-300 mb-4 md:mb-6">Current Carbon Footprint</h2>
