@@ -89,8 +89,19 @@ export function CarbonProvider({ children }: { children: ReactNode }) {
   }, [activities, waterLogs, profile, isMounted]);
 
   const addActivity = (activity: Omit<Activity, "id" | "date">) => {
+    if (!activity.title || typeof activity.title !== 'string' || activity.title.length > 200) {
+      console.warn("Invalid activity title");
+      return;
+    }
+    if (typeof activity.impact !== 'number' || isNaN(activity.impact) || activity.impact < -10000 || activity.impact > 10000) {
+      console.warn("Invalid activity impact");
+      return;
+    }
+
     const newActivity: Activity = {
-      ...activity,
+      title: activity.title.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;"), // Basic XSS prevention
+      category: activity.category,
+      impact: Number(activity.impact),
       id: Math.random().toString(36).substr(2, 9),
       date: new Date().toISOString(),
     };
@@ -98,8 +109,14 @@ export function CarbonProvider({ children }: { children: ReactNode }) {
   };
 
   const addWaterLog = (log: Omit<WaterLog, "id" | "date">) => {
+    if (typeof log.liters !== 'number' || isNaN(log.liters) || log.liters < 0 || log.liters > 10000) {
+      console.warn("Invalid water liters amount");
+      return;
+    }
+
     const newLog: WaterLog = {
-      ...log,
+      type: log.type,
+      liters: Number(log.liters),
       id: Math.random().toString(36).substr(2, 9),
       date: new Date().toISOString(),
     };

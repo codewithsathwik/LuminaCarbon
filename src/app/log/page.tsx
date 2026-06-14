@@ -108,6 +108,7 @@ export default function LogActivity() {
           
           {activeTab === "carbon" ? (
             <form onSubmit={handleCarbonLog} className="space-y-6 relative z-10">
+              <div aria-live="polite" className="sr-only">{isLogged ? "Carbon activity logged successfully!" : ""}</div>
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Category</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -127,21 +128,24 @@ export default function LogActivity() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Activity Details</label>
+                <label htmlFor="details-input" className="block text-sm font-medium text-gray-300 mb-2">Activity Details</label>
                 <input 
+                  id="details-input"
                   type="text" value={details} onChange={e => setDetails(e.target.value)} placeholder="e.g., Drove to work" 
                   className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-4 text-white focus:outline-none focus:border-[var(--primary)] transition-colors" required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Value</label>
+                <label htmlFor="duration-input" className="block text-sm font-medium text-gray-300 mb-2">Value</label>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input 
+                    id="duration-input"
                     type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder="15" 
                     className="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-4 text-white focus:outline-none focus:border-[var(--primary)] transition-colors" required min="0" step="0.1"
                   />
                   <select 
+                    aria-label="Unit of value"
                     value={unit} onChange={e => setUnit(e.target.value)}
                     className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-4 text-white focus:outline-none focus:border-[var(--primary)]"
                   >
@@ -159,6 +163,7 @@ export default function LogActivity() {
             </form>
           ) : (
             <form onSubmit={handleWaterLog} className="space-y-6 relative z-10">
+              <div aria-live="polite" className="sr-only">{isLogged ? "Water usage logged successfully!" : ""}</div>
               <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl flex items-start gap-3 mb-6">
                 <Info className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
                 <p className="text-sm text-blue-200">Water scarcity is a major issue in Indian cities. An average bucket bath uses 15-20L, while a 5-min shower uses 40-50L. RO purifiers reject up to 3 liters for every 1 liter purified.</p>
@@ -183,10 +188,11 @@ export default function LogActivity() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Amount (Liters)</label>
+                <label htmlFor="liters-input" className="block text-sm font-medium text-gray-300 mb-2">Amount (Liters)</label>
                 <input 
+                  id="liters-input"
                   type="number" value={liters} onChange={e => setLiters(e.target.value)} placeholder="e.g., 20" 
-                  className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-4 text-white focus:outline-none focus:border-blue-500 transition-colors" required min="0" step="1"
+                  className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-4 text-white focus:outline-none focus:border-blue-500 transition-colors" required min="0" max="1000" step="1"
                 />
               </div>
 

@@ -24,13 +24,15 @@ export default function Sidebar() {
           <h1 className="text-2xl font-bold tracking-tight text-white">Lumina<span className="text-[var(--primary)]">Carbon</span></h1>
         </div>
 
-        <nav className="flex-1 space-y-2">
+        <nav className="flex-1 space-y-2" aria-label="Main Navigation">
           {navItems.map((item) => {
             const isActive = currentPath === item.href;
             return (
               <Link
                 key={item.name}
                 href={item.href}
+                aria-label={item.name}
+                title={item.name}
                 className={clsx(
                   "flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300",
                   isActive 
@@ -55,13 +57,15 @@ export default function Sidebar() {
       </aside>
 
       {/* Mobile Bottom Nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#0A0A0A] z-30 flex justify-around items-center p-2 border-t border-[rgba(255,255,255,0.1)] safe-area-pb">
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#0A0A0A] z-30 flex justify-around items-center p-2 border-t border-[rgba(255,255,255,0.1)] safe-area-pb" aria-label="Mobile Navigation">
         {navItems.map((item) => {
           const isActive = currentPath === item.href;
           return (
             <Link
               key={item.name}
               href={item.href}
+              aria-label={item.name}
+              title={item.name}
               className={clsx(
                 "flex flex-col items-center p-2 rounded-lg transition-all",
                 isActive 

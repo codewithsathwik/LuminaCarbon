@@ -59,10 +59,10 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Main Score Widget */}
-        <div className="col-span-1 lg:col-span-2 glass rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden animate-pulse-glow">
+        <section className="col-span-1 lg:col-span-2 glass rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden animate-pulse-glow" aria-labelledby="footprint-heading">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)] rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
           
-          <h2 className="text-sm md:text-lg font-semibold text-gray-300 mb-4 md:mb-6">Current Carbon Footprint</h2>
+          <h2 id="footprint-heading" className="text-sm md:text-lg font-semibold text-gray-300 mb-4 md:mb-6">Current Carbon Footprint</h2>
           <div className="flex items-baseline gap-2 md:gap-4 mb-4">
             <span className={`text-5xl md:text-7xl font-extrabold text-glow ${isUnderGoal ? 'text-[var(--primary)]' : 'text-red-400'}`}>{footprintScoreTons}</span>
             <span className="text-lg md:text-2xl text-gray-400">Tons CO₂e</span>
@@ -95,23 +95,23 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Virtual Eco-System */}
-        <div className="glass rounded-2xl p-6 flex flex-col h-[380px] md:h-auto">
-          <h2 className="text-lg font-semibold text-gray-300 mb-2">Virtual Eco-System</h2>
+        <section className="glass rounded-2xl p-6 flex flex-col h-[380px] md:h-auto" aria-labelledby="ecosystem-heading">
+          <h2 id="ecosystem-heading" className="text-lg font-semibold text-gray-300 mb-2">Virtual Eco-System</h2>
           <div className="flex-1 w-full rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.05)]">
              <EcoHabitat progressPercent={progressPercent} isHealthy={isUnderGoal} />
           </div>
-        </div>
+        </section>
       </div>
 
       {/* Water Footprint Widget */}
-      <div className="glass rounded-2xl p-6 md:p-8 flex flex-col relative overflow-hidden border-l-4 border-blue-500">
+      <section className="glass rounded-2xl p-6 md:p-8 flex flex-col relative overflow-hidden border-l-4 border-blue-500" aria-labelledby="water-heading">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
         <div className="relative z-10 flex flex-col md:flex-row justify-between gap-6">
           <div>
-            <h2 className="text-sm md:text-lg font-semibold text-gray-300 mb-2">Today's Water Footprint</h2>
+            <h2 id="water-heading" className="text-sm md:text-lg font-semibold text-gray-300 mb-2">Today's Water Footprint</h2>
             <div className="flex items-baseline gap-2 md:gap-4 mb-2">
               <span className={`text-4xl md:text-5xl font-extrabold text-glow ${isWaterUnderGoal ? 'text-blue-400' : 'text-red-400'}`} style={{ textShadow: isWaterUnderGoal ? '0 0 10px rgba(59,130,246,0.5)' : undefined }}>{totalWaterToday.toFixed(0)}</span>
               <span className="text-lg text-gray-400">Liters</span>
@@ -129,14 +129,14 @@ export default function Dashboard() {
              </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Recent Activity */}
-        <div className="glass rounded-2xl p-6 flex flex-col h-full">
+        <section className="glass rounded-2xl p-6 flex flex-col h-full" aria-labelledby="recent-heading">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-lg font-semibold text-gray-300">Recent Activity</h2>
+            <h2 id="recent-heading" className="text-lg font-semibold text-gray-300">Recent Activity</h2>
             <Link href="/log" className="text-[var(--primary)] text-sm hover:underline">View All / Log More</Link>
           </div>
           <div className="space-y-4 flex-1 overflow-y-auto max-h-80 pr-2">
@@ -165,24 +165,28 @@ export default function Dashboard() {
               })
             )}
           </div>
-        </div>
+        </section>
 
         {/* Sustainability Tip */}
-        <div className="glass rounded-2xl p-6 bg-gradient-to-br from-[rgba(57,255,20,0.05)] to-transparent border border-[rgba(57,255,20,0.2)]">
+        <section className="glass rounded-2xl p-6 bg-gradient-to-br from-[rgba(57,255,20,0.05)] to-transparent border border-[rgba(57,255,20,0.2)]" aria-labelledby="tip-heading">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center box-glow">
               <Zap className="w-5 h-5 text-black" />
             </div>
-            <h2 className="text-lg font-semibold text-white">Daily Tip</h2>
+            <h2 id="tip-heading" className="text-lg font-semibold text-white">Daily Tip</h2>
           </div>
           <h3 className="text-xl font-bold text-[var(--primary)] mb-2">Reduce Standby Power</h3>
           <p className="text-gray-300 leading-relaxed mb-6">
             Devices in standby mode can account for up to 10% of your household energy use. Unplug electronics or use a smart power strip to easily cut power to multiple devices at once.
           </p>
-          <button onClick={handleQuickLog} className="w-full py-3 rounded-xl bg-[var(--primary)] text-black font-bold hover:bg-white hover:text-black transition-all duration-300 box-glow hover:box-glow-hover cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
+          <button 
+            onClick={handleQuickLog} 
+            className="w-full py-3 rounded-xl bg-[var(--primary)] text-black font-bold hover:bg-white hover:text-black transition-all duration-300 box-glow hover:box-glow-hover cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Log standby power reduction for minus 0.5 kg CO2"
+          >
             I'll do this today (-0.5 kg)
           </button>
-        </div>
+        </section>
 
       </div>
     </div>
