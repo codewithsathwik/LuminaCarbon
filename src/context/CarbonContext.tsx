@@ -65,17 +65,24 @@ export function CarbonProvider({ children }: { children: ReactNode }) {
     const savedProfile = localStorage.getItem("carbon_profile");
     
     if (savedActivities) {
-      try { setActivities(JSON.parse(savedActivities)); } catch(e) {}
+      try { setActivities(JSON.parse(savedActivities)); } catch(e) {
+        console.error("Failed to parse saved activities from localStorage:", e);
+        setActivities(initialActivities);
+      }
     } else {
       setActivities(initialActivities);
     }
 
     if (savedWaterLogs) {
-      try { setWaterLogs(JSON.parse(savedWaterLogs)); } catch(e) {}
+      try { setWaterLogs(JSON.parse(savedWaterLogs)); } catch(e) {
+        console.error("Failed to parse saved water logs from localStorage:", e);
+      }
     }
 
     if (savedProfile) {
-      try { setProfile(JSON.parse(savedProfile)); } catch(e) {}
+      try { setProfile(JSON.parse(savedProfile)); } catch(e) {
+        console.error("Failed to parse saved profile from localStorage:", e);
+      }
     }
   }, []);
 

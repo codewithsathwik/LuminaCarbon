@@ -50,11 +50,12 @@ export default function Profile() {
 
         <form onSubmit={handleSave} className="space-y-6 relative z-10">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+            <label htmlFor="profile-name" className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
               <User className="w-4 h-4 text-[var(--primary)]" />
               Display Name
             </label>
             <input 
+              id="profile-name"
               type="text" 
               value={name}
               onChange={e => setName(e.target.value)}
@@ -65,12 +66,13 @@ export default function Profile() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+              <label htmlFor="monthly-goal" className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                 <Target className="w-4 h-4 text-[var(--primary)]" />
                 Monthly Carbon Target
               </label>
               <div className="relative">
                 <input 
+                  id="monthly-goal"
                   type="number" 
                   value={goal}
                   onChange={e => setGoal(e.target.value)}
@@ -85,12 +87,13 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+              <label htmlFor="daily-water" className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                 <Droplets className="w-4 h-4 text-blue-400" />
                 Daily Water Target
               </label>
               <div className="relative">
                 <input 
+                  id="daily-water"
                   type="number" 
                   value={waterTarget}
                   onChange={e => setWaterTarget(e.target.value)}

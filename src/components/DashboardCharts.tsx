@@ -19,7 +19,7 @@ export default function EmissionsBreakdownChart() {
   }
 
   return (
-    <div className="w-full h-64 mt-4">
+    <div className="w-full h-64 mt-4" role="img" aria-label="Emissions breakdown by category pie chart">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <defs>

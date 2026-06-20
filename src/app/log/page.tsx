@@ -176,7 +176,7 @@ export default function LogActivity() {
                     <label key={type} className="cursor-pointer">
                       <input 
                         type="radio" name="waterType" className="peer sr-only" 
-                        checked={waterType === type} onChange={() => setWaterType(type as any)}
+                        checked={waterType === type} onChange={() => setWaterType(type as WaterLog["type"])}
                       />
                       <div className="flex items-center gap-2 p-3 rounded-xl border border-[rgba(255,255,255,0.1)] text-gray-400 peer-checked:border-blue-500 peer-checked:text-blue-400 peer-checked:bg-blue-500/10 transition-all">
                         {type === "Shower" ? <ShowerHead className="w-5 h-5" /> : <Droplets className="w-5 h-5" />}
